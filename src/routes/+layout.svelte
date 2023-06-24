@@ -1,9 +1,9 @@
 <script>
 	import Nav from '../lib/Nav.svelte';
-    import '../../styles/global.css';
+    import '../styles/global.css';
 </script>
 <header>
-    <Nav></Nav>    
+    <Nav/>
 </header>
 <main>
     <!-- page content -->
