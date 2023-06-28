@@ -2,4 +2,5 @@
     import Title from "$lib/Title.svelte"
 </script>
 <Title title="Langolier"></Title>
-home
+
+TODO: add content

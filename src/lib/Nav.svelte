@@ -3,6 +3,7 @@
 
 <nav>
     <a href="/">Home</a>
+    - <a href="/companies">Companies</a>
     - <a href="/types">Types</a>
     - <a href="/sources">Sources</a>
     - <a href="/feeds">Feeds</a>
