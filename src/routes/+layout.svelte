@@ -1,18 +1,18 @@
 <script>
-	import Nav from '../lib/Nav.svelte';
-    import '../styles/global.css';
+  import "../app.postcss";
+  import Nav from "../lib/Nav.svelte";
 </script>
+
 <header>
-    <Nav/>
+  <Nav />
 </header>
 <main>
-    <!-- page content -->
-    <slot/>
+  <!-- page content -->
+  <slot />
 </main>
 <footer>
-    <p>&copy; 2023</p>
-</footer>    
+  <p>&#xa9; 2023</p>
+</footer>
 
 <style>
-    
 </style>
