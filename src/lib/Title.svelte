@@ -2,4 +2,4 @@
     export let title = "Langolier"
 </script>
 
-<h1>{title}</h1>
+<h1 class="h1">{title}</h1>

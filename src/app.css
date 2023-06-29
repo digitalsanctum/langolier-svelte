@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body { @apply h-full overflow-hidden; }
+body {
+    @apply bg-gray-100 p-3;
+}
+
+article {
+    @apply rounded-lg shadow-lg p-6;
+}
