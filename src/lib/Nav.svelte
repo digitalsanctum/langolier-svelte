@@ -3,6 +3,8 @@
     import { page } from '$app/stores';
 </script>
 
+<!-- icons: https://fontawesome.com/search -->
+
 <TabGroup
         justify="justify-center"
         active="variant-filled-primary"
@@ -32,6 +34,14 @@
         <svelte:fragment slot="lead">(icon)</svelte:fragment>
         <span>Feeds</span>
     </TabAnchor>-->
+    <TabAnchor href="/data" selected={$page.url.pathname === '/data'}>
+        <svelte:fragment slot="lead"><i class="fa-solid fa-database"></i></svelte:fragment>
+        <span>Data</span>
+    </TabAnchor>
+    <TabAnchor href="/models" selected={$page.url.pathname === '/models'}>
+        <svelte:fragment slot="lead"><i class="fa-solid fa-diagram-project"></i></svelte:fragment>
+        <span>Models</span>
+    </TabAnchor>
     <TabAnchor href="/tools" selected={$page.url.pathname === '/tools'}>
         <svelte:fragment slot="lead"><i class="fa-solid fa-screwdriver-wrench"></i></svelte:fragment>
         <span>Tools</span>
@@ -39,6 +49,10 @@
     <TabAnchor href="/agents" selected={$page.url.pathname === '/agents'}>
         <svelte:fragment slot="lead"><i class="fa-solid fa-robot"></i></svelte:fragment>
         <span>Agents</span>
+    </TabAnchor>
+    <TabAnchor href="/editor" selected={$page.url.pathname === '/editor'}>
+        <svelte:fragment slot="lead"><i class="fa-solid fa-pen-fancy"></i></svelte:fragment>
+        <span>Editor</span>
     </TabAnchor>
 </TabGroup>
 

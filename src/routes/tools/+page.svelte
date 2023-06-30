@@ -11,3 +11,10 @@
         <li>No tools found.</li>
     {/each}
 </ul>
+
+<hr/>
+
+TODO:
+<ul>
+    <li>CRUD for LangChain tools</li>
+</ul>
