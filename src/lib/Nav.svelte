@@ -18,6 +18,10 @@
         <svelte:fragment slot="lead"><i class="fa-solid fa-house-chimney"></i></svelte:fragment>
         <span>Home</span>
     </TabAnchor>
+    <TabAnchor href="/garden" selected={$page.url.pathname === '/garden'}>
+        <svelte:fragment slot="lead"><i class="fa-solid fa-seedling"></i></svelte:fragment>
+        <span>Garden</span>
+    </TabAnchor>
     <TabAnchor href="/companies" selected={$page.url.pathname === '/companies'}>
         <svelte:fragment slot="lead"><i class="fa-sharp fa-solid fa-building"></i></svelte:fragment>
         <span>Companies</span>
