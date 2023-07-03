@@ -5,6 +5,7 @@ import { superValidate } from "sveltekit-superforms/server"
 
 const newCompanySchema = z.object({
     name: z.string().min(1).max(100),
+    url: z.string().url(),
 })
 
 const deleteCompanySchema = z.object({

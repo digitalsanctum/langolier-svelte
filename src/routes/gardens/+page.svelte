@@ -1,8 +1,30 @@
 <script>
     import Title from '$lib/Title.svelte'
+
     export let data
 </script>
-<Title title="Garden"></Title>
+<Title title="Gardens"></Title>
+
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+    </tr>
+    </thead>
+    <tbody>
+    {#each data.gardens as garden}
+        <tr>
+            <td>
+                <span><i class="fa-solid fa-seedling"></i></span>
+                <span class="flex-auto px-2">{garden.title}</span>
+            </td>
+        </tr>
+    {/each}
+    </tbody>
+</table>
+
+<hr/>
+
 
 TODO:
 

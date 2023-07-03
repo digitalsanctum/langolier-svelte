@@ -34,14 +34,19 @@
     </header>-->
 
     <form method="POST" action="?/create" use:enhance>
-        <div class="md:flex md:items-center mb-6">
+        <div class="md:flex mb-6">
             <div class="md:w-1/5">
                 <label for="name" class="label">
                     <span>Name</span>
                     <input type="text" class="input shadow border rounded" id="name" name="name" bind:value={$form.name} />
                 </label>
             </div>
-
+            <div class="md:w-1/5 px-10">
+                <label for="url" class="label">
+                    <span>URL</span>
+                    <input type="text" class="input shadow border rounded" id="url" name="url" bind:value={$form.url} />
+                </label>
+            </div>
         </div>
         <div class="md:w-1/5">
             <button type="submit" class="btn variant-filled">Add</button>
