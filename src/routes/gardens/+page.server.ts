@@ -9,7 +9,7 @@ const newGardenSchema = z.object({
 })
 
 const deleteGardenSchema = z.object({
-    id: z.string().uuid(),
+    slug: z.string(),
 })
 
 ///// Load //////////////////////////////////////////////////////////
@@ -49,7 +49,7 @@ export const actions = {
 
         if (!deleteForm.valid) return fail(400, { deleteForm })
 
-        await fetch('http://127.0.0.1:8080/api/gardens/' + deleteForm.data.id, {
+        await fetch('http://127.0.0.1:8080/api/gardens/' + deleteForm.data.slug, {
             method: 'DELETE'
         })
 

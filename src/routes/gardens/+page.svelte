@@ -7,7 +7,8 @@
     export let data: PageData
 
     const newGardenSchema = z.object({
-        name: z.string().min(1).max(100),
+        title: z.string().min(1).max(100),
+        slug: z.string().min(1).max(100),
     })
 
     const { form, errors, enhance } = superForm(data.createForm, {
@@ -66,7 +67,7 @@
             </td>
             <td>
                 <form method="POST" action="?/delete" use:deleteEnhance>
-                    <input type="hidden" name="id" value={garden.id} />
+                    <input type="hidden" name="slug" value={garden.slug} />
                 <button name="delete" class="btn btn-sm variant-filled">
                     <span><i class="fa-solid fa-trash"></i></span>
                     <span>Delete</span>
