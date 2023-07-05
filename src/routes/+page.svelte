@@ -1,6 +1,7 @@
 <script>
-    import Title from "$lib/Title.svelte"
+import Title from "$lib/Title.svelte";
 </script>
-<Title title="Langolier"></Title>
+
+<Title title="Home"></Title>
 
 TODO: add content

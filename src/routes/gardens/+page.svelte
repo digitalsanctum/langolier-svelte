@@ -1,8 +1,9 @@
 <script lang="ts">
-    import Title from '$lib/Title.svelte'
     import { superForm } from "sveltekit-superforms/client"
     import { z } from "zod"
     import type { PageData } from "./$types"
+    import Title from "$lib/Title.svelte";
+    import Breadcrumbs from "$lib/Breadcrumbs.svelte";
 
     export let data: PageData
 
@@ -23,12 +24,12 @@
     } = superForm(data.deleteForm, {
         resetForm: false
     })
+
+
 </script>
-
-<Title title="Gardens"></Title>
-
+<Breadcrumbs crumbs={data.crumbs} />
+<Title title={data.title} />
 <article class="p-4">
-
     <form method="POST" action="?/create" use:enhance>
         <div class="md:flex mb-6">
             <div class="md:w-1/5">
