@@ -3,10 +3,9 @@
 
     export let data
 
-    export let markup = data.html
 
 </script>
 
-<Title title="Page"></Title>
+<Title title="{data.page.title}"></Title>
 
-{@html markup}
+{@html data.markup}

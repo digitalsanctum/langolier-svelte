@@ -1,9 +1,55 @@
-<script>
+<script lang="ts">
     import Title from '$lib/Title.svelte'
+    import { superForm } from "sveltekit-superforms/client"
+    import { z } from "zod"
+    import type { PageData } from "./$types"
 
-    export let data
+    export let data: PageData
+
+    const newGardenSchema = z.object({
+        name: z.string().min(1).max(100),
+    })
+
+    const { form, errors, enhance } = superForm(data.createForm, {
+        taintedMessage: "Are you sure you want leave?",
+        validators: newGardenSchema,
+        resetForm: true
+    })
+
+    const {
+        form: deleteForm,
+        enhance: deleteEnhance,
+    } = superForm(data.deleteForm, {
+        resetForm: false
+    })
 </script>
+
 <Title title="Gardens"></Title>
+
+<article class="p-4">
+
+    <form method="POST" action="?/create" use:enhance>
+        <div class="md:flex mb-6">
+            <div class="md:w-1/5">
+                <label for="title" class="label">
+                    <span>Title</span>
+                    <input type="text" class="input shadow border rounded" id="title" name="title" bind:value={$form.title} />
+                </label>
+            </div>
+            <div class="md:w-1/5 px-10">
+                <label for="slug" class="label">
+                    <span>Slug</span>
+                    <input type="text" class="input shadow border rounded" id="slug" name="slug" bind:value={$form.slug} />
+                </label>
+            </div>
+        </div>
+        <div class="md:w-1/5">
+            <button type="submit" class="btn variant-filled">Add</button>
+        </div>
+    </form>
+</article>
+
+<hr>
 
 <table>
     <thead>
@@ -16,7 +62,16 @@
         <tr>
             <td>
                 <span><i class="fa-solid fa-seedling"></i></span>
-                <span class="flex-auto px-2">{garden.title}</span>
+                <span class="flex-auto px-2"><a href="/gardens/{garden.slug}">{garden.title}</a></span>
+            </td>
+            <td>
+                <form method="POST" action="?/delete" use:deleteEnhance>
+                    <input type="hidden" name="id" value={garden.id} />
+                <button name="delete" class="btn btn-sm variant-filled">
+                    <span><i class="fa-solid fa-trash"></i></span>
+                    <span>Delete</span>
+                </button>
+                </form>
             </td>
         </tr>
     {/each}

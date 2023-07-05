@@ -2,18 +2,16 @@
     import Title from '$lib/Title.svelte'
     import type {PageData} from "./$types"
 
-
     export let data: PageData
 
 </script>
 
-
-<Title title="Garden Blossoms"></Title>
+<Title title="{data.page_title}"></Title>
 
 <ul class="list p-4">
     {#each data.pages as page}
         <li class="p-2 bg-primary-hover-token">
-            {page.title}
+            <a href="{data.page_base_url}/{page.id}">{page.title}</a>
         </li>
     {:else}
         <li>Empty list</li>
