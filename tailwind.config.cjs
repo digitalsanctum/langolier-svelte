@@ -15,6 +15,7 @@ const config = {
 
   // skeleton should be last
   plugins: [
+    require('@tailwindcss/typography'),
       ...require("@skeletonlabs/skeleton/tailwind/skeleton.cjs")(),
   ]
 };
