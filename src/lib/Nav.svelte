@@ -18,7 +18,7 @@
         <svelte:fragment slot="lead"><i class="fa-solid fa-house-chimney"></i></svelte:fragment>
         <span>Home</span>
     </TabAnchor>
-    <TabAnchor href="/gardens" selected={$page.url.pathname === '/gardens'}>
+    <TabAnchor href="/gardens" selected={$page.url.pathname.startsWith('/gardens')}>
         <svelte:fragment slot="lead"><i class="fa-solid fa-seedling"></i></svelte:fragment>
         <span>Gardens</span>
     </TabAnchor>
