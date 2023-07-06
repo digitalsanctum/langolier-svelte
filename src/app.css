@@ -18,3 +18,7 @@ p {
 article {
     @apply rounded-lg shadow-lg p-6;
 }
+
+span.invalid {
+    @apply text-red-500 text-sm;
+}

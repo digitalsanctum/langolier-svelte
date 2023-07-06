@@ -4,6 +4,7 @@
     import type { PageData } from "./$types"
     import Title from "$lib/Title.svelte";
     import Breadcrumbs from "$lib/Breadcrumbs.svelte";
+    import SuperDebug from 'sveltekit-superforms/client/SuperDebug.svelte';
 
     export let data: PageData
 
@@ -29,6 +30,9 @@
 </script>
 <Breadcrumbs crumbs={data.crumbs} />
 <Title title={data.title} />
+
+<SuperDebug data="{$form}"></SuperDebug>
+
 <article class="p-4">
     <form method="POST" action="?/create" use:enhance>
         <div class="md:flex mb-6">

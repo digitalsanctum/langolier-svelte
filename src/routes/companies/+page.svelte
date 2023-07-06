@@ -25,8 +25,9 @@
     })
 </script>
 
-
 <Title title="Companies"></Title>
+
+<SuperDebug data="{$form}"></SuperDebug>
 
 <article class="p-4">
     <!--<header>
