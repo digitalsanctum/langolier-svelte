@@ -8,32 +8,25 @@
 
     export let data: PageData
     export let createPageForm
+    export let deletePageForm
 
-    const newPageSchema = z.object({
-        title: z.string().min(1).max(100),
-        slug: z.string().min(1).max(100),
-        content: z.string().min(1),
-        page_type: z.string().min(1),
-        garden_id: z.string().min(1),
-        publish: z.boolean()
-    })
 
     const {
         errors,
         form: createForm,
-        enhance: createEnhance
+        enhance: createEnhance,
+        message
     } = superForm(createPageForm, {
         taintedMessage: "Are you sure you want leave?",
-        // validators: newPageSchema,
         resetForm: true
     })
 
-    /*const {
+    const {
         form: deleteForm,
         enhance: deleteEnhance,
-    } = superForm(data.deletePageForm, {
+    } = superForm(deletePageForm, {
         resetForm: false
-    })*/
+    })
 
     export let crumbs = [
         { label: 'Home', link: '/' },
@@ -45,9 +38,21 @@
 <Breadcrumbs crumbs="{crumbs}"></Breadcrumbs>
 <Title title="{data.garden.title}"></Title>
 
-<SuperDebug data="{$createForm}"></SuperDebug>
+<!--<SuperDebug data="{$createForm}"></SuperDebug>-->
 
 <article class="p-4">
+
+    {#if $message}
+        <aside class="alert variant-ghost-warning">
+            <!-- Icon -->
+            <div><i class="fa-solid fa-triangle-exclamation"></i></div>
+            <div class="alert-message">
+<!--                <h3 class="h3">Warning!</h3>-->
+                <p>{$message}</p>
+            </div>
+        </aside>
+    {/if}
+
     <form method="POST" action="/gardens/{data.garden.slug}?/createPage" use:createEnhance>
         <input type="hidden" id="garden_id" name="garden_id" value={data.garden.id}  />
         <input type="hidden" id="publish" name="publish" value="false" />
@@ -94,13 +99,13 @@
     {#each data.pages.pages as page}
         <li class="p-2 bg-primary-hover-token">
             <a href="/gardens/{data.garden.slug}/{page.page_type}s/{page.slug}">{page.title} ({page.page_type})</a>
-            <!--<form method="POST" action="?/delete" use:deleteEnhance>
+            <form method="POST" action="?/deletePage" use:deleteEnhance>
                 <input type="hidden" name="slug" value={page.slug} />
                 <button name="delete" class="btn btn-sm variant-filled">
                     <span><i class="fa-solid fa-trash"></i></span>
                     <span>Delete</span>
                 </button>
-            </form>-->
+            </form>
         </li>
     {:else}
         <li>Empty list</li>

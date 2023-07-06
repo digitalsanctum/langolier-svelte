@@ -1,6 +1,6 @@
 import {fail} from "@sveltejs/kit"
 import {z} from "zod"
-import {superValidate} from "sveltekit-superforms/server"
+import {message, superValidate} from "sveltekit-superforms/server"
 
 
 const newPageSchema = z.object({
@@ -12,9 +12,9 @@ const newPageSchema = z.object({
     published: z.boolean()
 })
 
-/*const deletePageSchema = z.object({
+const deletePageSchema = z.object({
     slug: z.string(),
-})*/
+})
 
 ///// Load //////////////////////////////////////////////////////////
 
@@ -35,12 +35,11 @@ export const actions = {
         console.log(createPageForm)
 
         if (!createPageForm.valid) {
-            console.log("boo");
-            return fail(400, {createPageForm})
+            return message(createPageForm, 'Form is invalid', {status: 400});
         }
 
         // post to api
-        await fetch('http://127.0.0.1:8080/api/pages', {
+        const api_response = await fetch('http://127.0.0.1:8080/api/pages', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -48,8 +47,14 @@ export const actions = {
             body: JSON.stringify(createPageForm.data),
         })
 
+        console.log(api_response);
+
+        if (api_response.status > 299) {
+            return message(createPageForm, 'API error', {status: api_response.status});
+        }
+
         return {createPageForm}
-    }/*,
+    },
     deletePage: async ({request}) => {
         const deletePageForm = await superValidate(request, deletePageSchema)
         console.log(deletePageForm)
@@ -61,5 +66,5 @@ export const actions = {
         })
 
         return {deletePageForm}
-    }*/
+    }
 }
